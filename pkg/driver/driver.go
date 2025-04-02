@@ -34,7 +34,7 @@ type driver struct {
 
 var (
 	vendorVersion = "v1.2.0-rc.2"
-	driverName    = "ch.ctrox.csi.s3-driver"
+	driverName    = "ch.inference-ai.csi.s3-driver"
 )
 
 // New initializes the driver

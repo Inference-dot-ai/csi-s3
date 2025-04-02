@@ -96,7 +96,7 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: csi-s3-existing-bucket
-provisioner: ch.ctrox.csi.s3-driver
+provisioner: ch.inference-ai.csi.s3-driver
 parameters:
   mounter: rclone
   bucket: some-existing-bucket-name
@@ -113,7 +113,7 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: csi-s3-existing-bucket
-provisioner: ch.ctrox.csi.s3-driver
+provisioner: ch.inference-ai.csi.s3-driver
 reclaimPolicy: Retain
 parameters:
   mounter: rclone
@@ -195,7 +195,7 @@ kubectl logs -l app=csi-s3 -c csi-s3
 This project can be built like any other go application.
 
 ```bash
-go get -u github.com/ctrox/csi-s3
+go get -u github.com/Inference-dot-ai/csi-s3
 ```
 
 ### Build executable

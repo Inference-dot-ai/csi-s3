@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/ctrox/csi-s3/pkg/driver"
-	"github.com/ctrox/csi-s3/pkg/mounter"
+	"github.com/Inference-dot-ai/csi-s3/pkg/driver"
+	"github.com/Inference-dot-ai/csi-s3/pkg/mounter"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
