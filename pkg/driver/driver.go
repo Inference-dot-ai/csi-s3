@@ -33,7 +33,7 @@ type driver struct {
 }
 
 var (
-	vendorVersion = "v1.2.0-rc.2"
+	vendorVersion = "v0.0.1"
 	driverName    = "ch.inference-ai.csi.s3-driver"
 )
 
