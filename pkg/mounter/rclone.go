@@ -51,8 +51,12 @@ func (rclone *rcloneMounter) Mount(source string, target string) error {
 		fmt.Sprintf("--s3-endpoint=%s", rclone.url),
 		"--allow-other",
 		"--vfs-cache-mode=writes",
-		rclone.meta.Options,
 	}
+
+	if rclone.meta.Options != "" {
+		args = append(args, rclone.meta.Options)
+	}
+
 	os.Setenv("AWS_ACCESS_KEY_ID", rclone.accessKeyID)
 	os.Setenv("AWS_SECRET_ACCESS_KEY", rclone.secretAccessKey)
 	return fuseMount(target, rcloneCmd, args)
