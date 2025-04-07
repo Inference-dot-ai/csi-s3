@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 )
@@ -53,8 +54,10 @@ func (rclone *rcloneMounter) Mount(source string, target string) error {
 		"--vfs-cache-mode=full",
 	}
 
-	if rclone.meta.Options != "" {
-		args = append(args, rclone.meta.Options)
+	// split spaces in options
+	options := strings.Split(rclone.meta.Options, " ")
+	for _, option := range options {
+		args = append(args, option)
 	}
 
 	os.Setenv("AWS_ACCESS_KEY_ID", rclone.accessKeyID)

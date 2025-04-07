@@ -86,7 +86,7 @@ spec:
             - name: socket-dir
               mountPath: /var/lib/kubelet/plugins/ch.inference-ai.csi.s3-driver
         - name: csi-s3
-          image: harbor.service-inference.ai/inference-infra/csi-s3:v0.0.3
+          image: harbor.service-inference.ai/inference-infra/csi-s3:v0.0.4
           args:
             - "--endpoint=$(CSI_ENDPOINT)"
             - "--nodeid=$(NODE_ID)"
