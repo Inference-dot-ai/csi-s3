@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ctrox/csi-s3/pkg/mounter"
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/mounter"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 	"github.com/golang/glog"
 	"golang.org/x/net/context"
 

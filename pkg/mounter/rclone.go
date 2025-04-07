@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strings"
 
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 )
 
 // Implements Mounter
@@ -50,9 +51,15 @@ func (rclone *rcloneMounter) Mount(source string, target string) error {
 		fmt.Sprintf("--s3-region=%s", rclone.region),
 		fmt.Sprintf("--s3-endpoint=%s", rclone.url),
 		"--allow-other",
-		// TODO: make this configurable
-		"--vfs-cache-mode=writes",
+		"--vfs-cache-mode=full",
 	}
+
+	// split spaces in options
+	options := strings.Split(rclone.meta.Options, " ")
+	for _, option := range options {
+		args = append(args, option)
+	}
+
 	os.Setenv("AWS_ACCESS_KEY_ID", rclone.accessKeyID)
 	os.Setenv("AWS_SECRET_ACCESS_KEY", rclone.secretAccessKey)
 	return fuseMount(target, rcloneCmd, args)

@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 	"github.com/golang/glog"
 	"github.com/mitchellh/go-ps"
 	"k8s.io/mount-utils"
@@ -33,6 +33,7 @@ const (
 	BucketKey           = "bucket"
 	VolumePrefix        = "prefix"
 	UsePrefix           = "usePrefix"
+	Options             = "options"
 )
 
 // New returns a new mounter depending on the mounterType parameter

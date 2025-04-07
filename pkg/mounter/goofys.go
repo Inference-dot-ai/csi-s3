@@ -7,7 +7,7 @@ import (
 
 	"context"
 
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 	goofysApi "github.com/kahing/goofys/api"
 	"github.com/kahing/goofys/api/common"
 )

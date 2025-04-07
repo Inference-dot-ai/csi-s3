@@ -1,4 +1,4 @@
-module github.com/ctrox/csi-s3
+module github.com/Inference-dot-ai/csi-s3
 
 go 1.15
 

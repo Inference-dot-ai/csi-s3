@@ -22,8 +22,8 @@ rules:
     resources: ["nodes"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["storage.k8s.io"]
-    resources: ["volumeattachments"]
-    verbs: ["get", "list", "watch", "update", "patch"]
+    resources: ["volumeattachments/status"]
+    verbs: ["patch"]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -71,23 +71,23 @@ spec:
     spec:
       serviceAccount: csi-attacher-sa
       tolerations:
-      - key: node-role.kubernetes.io/master
-        operator: "Exists"
+        - key: node-role.kubernetes.io/master
+          operator: "Exists"
       containers:
         - name: csi-attacher
-          image: quay.io/k8scsi/csi-attacher:v2.2.0
+          image: quay.io/k8scsi/csi-attacher:v3.1.0
           args:
             - "--v=4"
             - "--csi-address=$(ADDRESS)"
           env:
             - name: ADDRESS
-              value: /var/lib/kubelet/plugins/ch.ctrox.csi.s3-driver/csi.sock
+              value: /var/lib/kubelet/plugins/ch.inference-ai.csi.s3-driver/csi.sock
           imagePullPolicy: "IfNotPresent"
           volumeMounts:
             - name: socket-dir
-              mountPath: /var/lib/kubelet/plugins/ch.ctrox.csi.s3-driver
+              mountPath: /var/lib/kubelet/plugins/ch.inference-ai.csi.s3-driver
       volumes:
         - name: socket-dir
           hostPath:
-            path: /var/lib/kubelet/plugins/ch.ctrox.csi.s3-driver
+            path: /var/lib/kubelet/plugins/ch.inference-ai.csi.s3-driver
             type: DirectoryOrCreate

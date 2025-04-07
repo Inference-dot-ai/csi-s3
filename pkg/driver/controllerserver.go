@@ -25,8 +25,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ctrox/csi-s3/pkg/mounter"
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/mounter"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 	"github.com/golang/glog"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
@@ -52,6 +52,7 @@ func (cs *controllerServer) CreateVolume(ctx context.Context, req *csi.CreateVol
 	bucketName := volumeID
 	prefix := ""
 	usePrefix, usePrefixError := strconv.ParseBool(params[mounter.UsePrefix])
+	options := params[mounter.Options]
 	defaultFsPath := defaultFsPath
 
 	// check if bucket name is overridden
@@ -93,6 +94,7 @@ func (cs *controllerServer) CreateVolume(ctx context.Context, req *csi.CreateVol
 		Mounter:       mounterType,
 		CapacityBytes: capacityBytes,
 		FSPath:        defaultFsPath,
+		Options:       options,
 	}
 
 	client, err := s3.NewClientFromSecret(req.GetSecrets())

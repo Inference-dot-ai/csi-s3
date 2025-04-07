@@ -8,7 +8,7 @@ import (
 
 	osexec "os/exec"
 
-	"github.com/ctrox/csi-s3/pkg/s3"
+	"github.com/Inference-dot-ai/csi-s3/pkg/s3"
 	"github.com/golang/glog"
 	"k8s.io/mount-utils"
 	"k8s.io/utils/exec"
