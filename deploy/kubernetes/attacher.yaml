@@ -22,8 +22,8 @@ rules:
     resources: ["nodes"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["storage.k8s.io"]
-    resources: ["volumeattachments"]
-    verbs: ["get", "list", "watch", "update", "patch"]
+    resources: ["volumeattachments/status"]
+    verbs: ["patch"]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -71,8 +71,8 @@ spec:
     spec:
       serviceAccount: csi-attacher-sa
       tolerations:
-      - key: node-role.kubernetes.io/master
-        operator: "Exists"
+        - key: node-role.kubernetes.io/master
+          operator: "Exists"
       containers:
         - name: csi-attacher
           image: quay.io/k8scsi/csi-attacher:v3.1.0

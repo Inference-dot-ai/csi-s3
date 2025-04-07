@@ -50,7 +50,7 @@ func (rclone *rcloneMounter) Mount(source string, target string) error {
 		fmt.Sprintf("--s3-region=%s", rclone.region),
 		fmt.Sprintf("--s3-endpoint=%s", rclone.url),
 		"--allow-other",
-		"--vfs-cache-mode=writes",
+		"--vfs-cache-mode=full",
 	}
 
 	if rclone.meta.Options != "" {
