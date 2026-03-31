@@ -14,7 +14,7 @@
 .PHONY: test build container push clean
 
 PROJECT_DIR=/app
-REGISTRY_NAME=harbor.service-inference.ai/inference-infra
+REGISTRY_NAME=registry.digitalocean.com/inference-ai-machine-image-registry/inference-infra
 IMAGE_NAME=csi-s3
 VERSION ?= dev
 IMAGE_TAG=$(REGISTRY_NAME)/$(IMAGE_NAME):$(VERSION)
